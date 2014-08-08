@@ -16,6 +16,7 @@
 			
 			function SetUp(){
 				var feedpointer=new google.feeds.Feed(URL);
+				document.addEventListener("menubutton", doMenu, false);
 				feedpointer.setNumEntries(30);
 				feedpointer.load(Loaded);
 
@@ -30,6 +31,8 @@
 
 				}
 			}
+			
+			function doMenu(){alert('hola');}
 			
 			function GetInfo(result,index){
 				var Dades=result.feed.entries[index];
@@ -133,7 +136,7 @@
 			p{margin:4px;}
 		</style>
 	</head>
-	<body style="background-color: moccasin;">
+	<body style="background-color: moccasin;" >
 		
 	</body>
 </html>
