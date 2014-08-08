@@ -13,6 +13,8 @@
 			google.load("feeds", "1");
 			var Nums=[[],[04,08,12,24,30,49],[08,11,12,30,33,37],[03,05,08,10,12,30],[07,08,10,12,13,30],[08,12,20,23,25,30],[01,08,12,30,33,36],[08,12,19,30,40,43],[03,08,12,13,18,30]];
 			var Resultats=[];
+			var menuOpen = false;
+			var menuDiv = "";
 			
 			function SetUp(){
 				var feedpointer=new google.feeds.Feed(URL);
@@ -32,7 +34,16 @@
 				}
 			}
 			
-			function doMenu(){alert('hola');}
+			function doMenu()
+			{
+				if(menuOpen) {
+					menuDiv.style.display="none";
+					menuOpen = false;
+				} else {
+					menuDiv.style.display="block";
+					menuOpen = true;
+				}
+			}
 			
 			function GetInfo(result,index){
 				var Dades=result.feed.entries[index];
@@ -134,9 +145,20 @@
 			.DIA {background:darkcyan; border:1px solid moccasin; border-radius:8px;}
 			.NUM_OK{background:red;}
 			p{margin:4px;}
+			div#menu {
+				width: 30%;
+				background-color: yellow;
+				position:absolute;
+				bottom: 0;
+				left: 35%;
+				display:none;
+			}
 		</style>
 	</head>
 	<body style="background-color: moccasin;" >
-		
+		<div id="menu">
+			<a href="">Option One</a><br/>
+			<a href="">Option Two</a>
+		</div>
 	</body>
 </html>
