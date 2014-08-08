@@ -126,10 +126,7 @@
             html, body {margin:0;padding:0;
             }
 			body{
-				background-image: url('loading.gif');
-				background-repeat: no-repeat;
-				background-position: center;
-				background-size:35%;
+				
 				}
 			html{height:100%;}
 			input {width:20px;text-align:center;border-radius: 7px;background-color:burlywood;margin:1px;}
@@ -159,7 +156,7 @@
 			}
 		</script>
 	</head>
-	<body style="background-color: moccasin;" onload="Init();">
+	<body style="background-color: moccasin;background-image: url('loading.gif');background-repeat: no-repeat;background-position: center;background-size:35%;" onload="Init();">
 		<div id="menu">
 			<p onclick="Actualizar();">Actualizar</p>
 			<p onclick="navigator.app.exitApp();">Salir</p>
