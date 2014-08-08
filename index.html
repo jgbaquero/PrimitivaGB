@@ -117,7 +117,7 @@
 				return Aciertos;	
 			}
 			
-			window.onload=function(){SetUp();};
+			window.onload=function(){};
 			
 		</script>
 
@@ -143,18 +143,17 @@
 				position:absolute;
 				bottom: 1px;
 				left: 5%;
-				display:none;
+				display:block;
 				border-radius:10px 10px 0 0;
 			}
-			#menu p {border:1px solid black;font-size:30px; height: 20%;}
+			#menu p {border:1px solid black;font-size:40px; height: 20%;margin:20px;}
 			#menu p:hover {background-color:red;}
 		</style>
 		<script>
-			function Init(){document.addEventListener("menubutton", doMenu, false);}
+			function Init(){document.addEventListener("menubutton", doMenu, false);SetUp();}
 			
 			function Actualizar(){
 				$('.DIA').remove();
-				alert('hi');
 				SetUp();
 				$('#menu').hide();
 			}
