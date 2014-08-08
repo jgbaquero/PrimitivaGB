@@ -52,7 +52,8 @@
 				
 				for	(i = 1; i < 7; i++)
 				{
-				$('#I' + index).append("<input id='" + 'N' + index + i + "' type='text' >");
+				if((dades[i]=='30')||(dades[i]=='12')||(dades[i]=='08')||(dades[i]=='8')) {$('#I' + index).append("<input id='" + 'N' + index + i + "' type='text' class='NUM_OK' >");}
+				else {$('#I' + index).append("<input id='" + 'N' + index + i + "' type='text'  class='NUM' >");}
 				$(Control + i).val(dades[i]);
 				}
 				
@@ -121,6 +122,7 @@
 			input {width:20px;text-align:center;border-radius: 7px;background-color:burlywood;}
 			div {text-align:center;}
 			.DIA {background:darkcyan; border:1px solid black;}
+			.NUM_OK{background:red;}
 		</style>
 	</head>
 	<body >
