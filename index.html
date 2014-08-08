@@ -8,7 +8,7 @@
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 		<script type="text/javascript" src="http://www.google.com/jsapi"></script>
 		
-		<script type="text/javascript">
+		<script>
 			var URL='http://www.loteriasyapuestas.es/es/la-primitiva/resultados/.formatoRSS';
 			google.load("feeds", "1");
 			var Nums=[[],[12,34,23,45,34,23],[16,20,28,45,34,23],[16,20,28,40,34,23],[12,34,23,45,34,23],[02,44,49,34,23],[12,34,23,45,34,23],[12,34,23,45,34,23],[12,34,23,45,34,23]];
@@ -109,15 +109,16 @@
 				return Aciertos;	
 			}
 			
-			window.onload=function(){SetUp()};
+			window.onload=function(){SetUp();};
+			
 		</script>
 
 		<style>
-			input{width:20px;text-align:center;}
-			div{text-align:center;}
+			input {width:20px;text-align:center;}
+			div {text-align:center;}
 		</style>
 	</head>
-	<body onload="">
+	<body >
 		
 	</body>
 </html>
