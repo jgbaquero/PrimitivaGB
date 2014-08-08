@@ -17,7 +17,6 @@
 			
 			function SetUp(){
 				var feedpointer=new google.feeds.Feed(URL);
-				document.addEventListener("menubutton", doMenu, false);
 				feedpointer.setNumEntries(30);
 				feedpointer.load(Loaded);
 
@@ -152,14 +151,17 @@
 			#menu p:hover {background-color:red;}
 		</style>
 		<script>
+			function Init(){document.addEventListener("menubutton", doMenu, false);}
+			
 			function Actualizar(){
-				alert('hi);
+				$('.DIA').remove();
+				alert('hi');
+				SetUp();
 				$('#menu').hide();
-				menuOpen = false;
 			}
 		</script>
 	</head>
-	<body style="background-color: moccasin;" >
+	<body style="background-color: moccasin;" onload="Init();">
 		<div id="menu">
 			<p onclick="Actualizar();">Actualizar</p>
 			<p onclick="navigator.app.exitApp();">Salir</p>
