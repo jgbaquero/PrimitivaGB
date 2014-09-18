@@ -29,17 +29,6 @@
 						GetInfo(result,x);
 						VerificarPremio(x);
 						MostrarDades(x);
-						if (Refresh==true && x == 0)
-						{
-							if (Anterior == null){Anterior=result.feed.entries[0];}
-							if (Anterior != result.feed.entries[index]) 
-							{
-								Refresh=false;
-								var my_media = new Media('http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3');
-								my_media.play();
-							}
-							Anterior=result.feed.entries[index];
-						}
 					}
 				}
 				if (Refresh == true) {setTimeout(function () { SetUp(); },5 * 60 * 100)}
