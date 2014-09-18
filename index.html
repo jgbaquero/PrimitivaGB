@@ -158,7 +158,7 @@
 			function Sonar()
 				{
 				alert('H1');
-				var my_media = new Media("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3");
+				var my_media = new Media("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3",function () { alert('OK'); },function (err) { alert('ERR: ' + err); });
 				my_media.play();
 				setTimeout(function () {my_media.pause();}, 2000);
 				alert('H2');
