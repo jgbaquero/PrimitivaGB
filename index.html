@@ -154,12 +154,20 @@
 				SetUp();
 				$('#menu').hide();
 			}
+			
+			function Sonar()
+				{
+				var my_media = new Media("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3");
+				my_media.play();
+				setTimeout(function () {my_media.pause();}, 2000);
+				}
 		</script>
 	</head>
 	<body style="background-color: moccasin;background-image: url('loading.gif');background-repeat: no-repeat;background-position: center;background-size:35%;" onload="Init();">
 		<div id="menu">
 			<p onclick="Actualizar();">Actualizar</p>
 			<p onclick="navigator.app.exitApp();">Salir</p>
+			<p onclick="Sonar();">Sonido</p>
 		</div>
 	</body>
 </html>
