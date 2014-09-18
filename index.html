@@ -13,6 +13,8 @@
 			google.load("feeds", "1");
 			var Nums=[[],[04,08,12,24,30,49],[08,11,12,30,33,37],[03,05,08,10,12,30],[07,08,10,12,13,30],[08,12,20,23,25,30],[01,08,12,30,33,36],[08,12,19,30,40,43],[03,08,12,13,18,30]];
 			var Resultats=[];
+			var Anterior;
+			var Refresh=true;
 			
 			
 			function SetUp(){
@@ -27,13 +29,23 @@
 						GetInfo(result,x);
 						VerificarPremio(x);
 						MostrarDades(x);
+						if (Refresh==true && x == 0)
+						{
+							if (Anterior==null){Anterior=result.feed.entries[index];}
+							if (Anterior != result.feed.entries[index]) 
+							{
+								Refresh=false;
+								var my_media = new Media('http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3',function () { alert('OK'); },function (err) { alert('ERR: ' + err); });
+								my_media.play();
+							}
+							Anterior=result.feed.entries[index];
+						}
 					}
-
 				}
+				if (Refresh == true) {setTimeout(function () { SetUp(); },5 * 60 * 100)}
 			}
 			
-			function doMenu()
-			{
+			function doMenu(){
 				$('#menu').show();
 			}
 			
@@ -155,22 +167,13 @@
 				$('#menu').hide();
 			}
 			
-			function Sonar()
-				{
-				alert('H1');
-				var my_media = new Media("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3",function () { alert('OK'); },function (err) { alert('ERR: ' + err); });
-				my_media.play();
-				setTimeout(function () {my_media.pause();}, 2000);
-				alert('H2');
-				$('#menu').hide();
-				}
+			
 		</script>
 	</head>
 	<body style="background-color: moccasin;background-image: url('loading.gif');background-repeat: no-repeat;background-position: center;background-size:35%;" onload="Init();">
 		<div id="menu">
 			<p onclick="Actualizar();">Actualizar</p>
 			<p onclick="navigator.app.exitApp();">Salir</p>
-			<p onclick="Sonar();">Sonido</p>
 		</div>
 	</body>
 </html>
