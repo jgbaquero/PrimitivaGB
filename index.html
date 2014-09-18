@@ -18,6 +18,7 @@
 			
 			
 			function SetUp(){
+				$('.DIA').remove();
 				var feedpointer=new google.feeds.Feed(URL);
 				feedpointer.setNumEntries(30);
 				feedpointer.load(Loaded);
@@ -151,7 +152,6 @@
 			function Init(){document.addEventListener("menubutton", doMenu, false);SetUp();}
 			
 			function Actualizar(){
-				$('.DIA').remove();
 				SetUp();
 				$('#menu').hide();
 			}
