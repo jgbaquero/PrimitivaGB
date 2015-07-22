@@ -30,18 +30,17 @@
 						GetInfo(result,x);
 						VerificarPremio(x);
 						MostrarDades(x);
-						if (Refresh==true && x == 0)
-						{
-							var LastDate=result.feed.entries[0];
-							if (Anterior != LastDate) 
-							{
-								Refresh=false;
-								var my_media = new Media('http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3');
-								my_media.play();
-							}
-							Anterior=LastDate;
-							if (Anterior == null){Anterior=LastDate;}
-						}
+						if (Refresh == true && x == 0) {
+				                    var LastDate = result.feed.entries[0];
+				                    if (Anterior != null) {
+				                        if (Anterior.publishedDate != LastDate.publishedDate) {
+				                            Refresh = false;
+				                            var my_media = new Media('http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3');
+				                            my_media.play();
+				                        }
+				                    }
+				                    if (Anterior == null) { Anterior = LastDate; }
+				                }
 					}
 				}
 				if (Refresh == true) {setTimeout(function () { SetUp(); },5 * 60 * 1000)}
