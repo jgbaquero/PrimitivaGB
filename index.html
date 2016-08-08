@@ -35,8 +35,11 @@
 				                    if (Anterior != null) {
 				                        if (Anterior.publishedDate != LastDate.publishedDate) {
 				                            Refresh = false;
-				                            var my_media = new Media('http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3');
-				                            my_media.play();
+											if(Resultats[0][15]==1){
+												var my_media = new Media('http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3');
+												my_media.play();
+											}
+				                            
 				                        }
 				                    }
 				                    if (Anterior == null) { Anterior = LastDate; }
@@ -44,10 +47,6 @@
 					}
 				}
 				if (Refresh == true) {setTimeout(function () { SetUp(); },5 * 60 * 1000)}
-			}
-			
-			function doMenu(){
-				$('#menu').show();
 			}
 			
 			function GetInfo(result,index){
@@ -95,7 +94,6 @@
 				else { Resultat='SIN PREMIO...';}
 				$('#S' + index).html(Resultat);
 				
-				//$("#CONT" + index).append( "<br/>");
 			}
 			
 			function VerificarPremio(index){
@@ -118,7 +116,6 @@
 				{
 					for	(iRNum = 1; iRNum < 7; iRNum++)
 						{
-							console.log(parseInt(Resultats[Dia][iRNum]) + '   ' + Nums[Apuesta][iANum - 1]);
 							if(parseInt(Resultats[Dia][iRNum]) == parseInt(Nums[Apuesta][iANum - 1])) 
 							{
 								Aciertos=Aciertos + 1;
@@ -135,45 +132,20 @@
 		</script>
 
 		<style>
-            * {font-weight:bold;            }
-            html, body {margin:0;padding:0;
-            }
-			body{
-				
-				}
+            * {font-weight:bold;}
+            html, body {margin:0;padding:0;}
+			body{background-color: moccasin;background-image: url('loading.gif');background-repeat: no-repeat;background-position: center;background-size:35%;}
 			html{height:100%;}
 			input {width:20px;text-align:center;border-radius: 7px;background-color:burlywood;margin:1px;}
 			div {text-align:center;}
 			.DIA {background:darkcyan; border:1px solid moccasin; border-radius:8px;}
 			.NUM_OK{background:red;}
 			p{margin:4px;}
-			div#menu {
-				width: 90%;
-				background-color: darkgoldenrod;
-				position:absolute;
-				bottom: 1px;
-				left: 5%;
-				display:none;
-				border-radius:10px 10px 0 0;
-			}
-			#menu p {border:1px solid black;font-size:40px; height: 20%;margin:20px;}
-			#menu p:hover {background-color:red;}
 		</style>
 		<script>
-			function Init(){document.addEventListener("menubutton", doMenu, false);SetUp();}
-			
-			function Actualizar(){
-				SetUp();
-				$('#menu').hide();
-			}
-			
-			
+			function Init(){SetUp();}
 		</script>
 	</head>
-	<body style="background-color: moccasin;background-image: url('loading.gif');background-repeat: no-repeat;background-position: center;background-size:35%;" onload="Init();">
-		<div id="menu">
-			<p onclick="Actualizar();">Actualizar</p>
-			<p onclick="navigator.app.exitApp();">Salir</p>
-		</div>
+	<body onload="Init();">
 	</body>
 </html>
