@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -9,15 +9,20 @@
 		<script type="text/javascript" src="http://www.google.com/jsapi"></script>
 		
 		<script>
-			var URL='http://www.loteriasyapuestas.es/es/la-primitiva/resultados/.formatoRSS';
+			var URL='http://www.loteriasyapuestas.es/es/la-primitiva/resultados/.formatoRSS?ts=' + currentDateTime();
 			google.load("feeds", "1");
 			var Nums=[[],[04,08,12,24,30,49],[08,11,12,30,33,37],[03,05,08,10,12,30],[07,08,10,12,13,30],[08,12,20,23,25,30],[01,08,12,30,33,36],[08,12,19,30,40,43],[03,08,12,13,18,30]];
 			var Resultats=[];
 			var Anterior=null;
 			var Refresh=true;
 			
+			function currentDateTime() {
+				var newDate = new Date();
+				return newDate.getFullYear() + "." + ((newDate.getMonth() + 1 < 10 ? '0' : '')) + (newDate.getMonth() + 1) + "." + (newDate.getDate() < 10 ? '0' : '') + (newDate.getDate()) + "." + (newDate.getHours() < 10 ? '0' : '') + newDate.getHours() + "." + (newDate.getMinutes() < 10 ? "0" : "") + newDate.getMinutes() + "." + (newDate.getSeconds() < 10 ? "0" : "") + newDate.getSeconds();
+			}
 			
 			function SetUp(){
+				$('body .DEBUG').html("SETUP");
 				$('.DIA').remove();
 				var feedpointer=new google.feeds.Feed(URL);
 				feedpointer.setNumEntries(30);
@@ -25,6 +30,7 @@
 
 				function Loaded(result)
 				{
+					$('body .DEBUG').html("LOADED START");
 					for	(x = 0; x < result.feed.entries.length; x=x+2)
 					{
 						GetInfo(result,x);
@@ -45,6 +51,7 @@
 				                    if (Anterior == null) { Anterior = LastDate; }
 				                }
 					}
+					$('body .DEBUG').html("LOADED END: " + result.feed.entries.length);
 				}
 				if (Refresh == true) {setTimeout(function () { SetUp(); },5 * 60 * 1000)}
 			}
@@ -143,7 +150,18 @@
 			p{margin:4px;}
 		</style>
 		<script>
-			function Init(){SetUp();}
+			function Init(){
+				var debug=true;
+				$('body').append("<div class='DEBUG'></div>");
+				if(debug==false){
+					$('body .DEBUG').hide();
+				}
+				else{
+					$('body .DEBUG').html(currentDateTime());
+					$('body .DEBUG').html("INIT");
+				}
+				SetUp();
+			}
 		</script>
 	</head>
 	<body onload="Init();">
