@@ -17,6 +17,14 @@
         <author href="http://www.google.es" email="jordi.gbaquero@gmail.com">
         Jordi Garcia-Baquero Lleixa
         </author>
+        
+        <preference name="android-build-tool" value="ant|gradle" />
+        <preference name="android-minSdkVersion" value="14" />
+        <preference name="android-maxSdkVersion" value="16" />
+        <preference name="android-targetSdkVersion" value="15" />
+        <preference name="android-installLocation" value="auto" />
+        <preference name="android-windowSoftInputMode" value="stateVisible|adjustResize" />
+        
         <gap:plugin name="org.apache.cordova.media" version="0.2.8" />
         <!--<plugin name="org.apache.cordova.media" source="pgb" spec="0.2.8" />-->
     </widget>
